@@ -1,8 +1,28 @@
+"use client";
+
 import Image from "next/image";
-import SideBar from "../../component/SideBar";
+import SideBar from "../../components/SideBar";
 import { IoChatbubblesOutline } from "react-icons/io5";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase";
+import { CgSpinner } from "react-icons/cg";
+import Login from "@/components/Login";
 
 export default function Home() {
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center w-full h-screen">
+        <CgSpinner className="w-20 h-10 animate-spin" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Login />;
+  }
+
   return (
     <main className="grid w-full grid-cols-8">
       <div className="col-span-2">
