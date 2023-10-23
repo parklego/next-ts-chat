@@ -4,12 +4,31 @@ import Image from "next/image";
 import SideBar from "../../components/SideBar";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/firebase";
+import { auth, db } from "@/firebase";
 import { CgSpinner } from "react-icons/cg";
 import Login from "@/components/Login";
+import { useEffect } from "react";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
+
+  useEffect(() => {
+    if (user) {
+      setDoc(
+        doc(db, "users", user.uid),
+        {
+          email: user.email,
+          lastActive: serverTimestamp(),
+          photoURL: user.photoURL,
+          displayName: user.displayName,
+        },
+        {
+          merge: true,
+        }
+      );
+    }
+  }, [user]);
 
   if (loading) {
     return (

@@ -7,12 +7,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCf6UBcyxke4Xr16PlSOWCSRc4q3Jme3lU",
-  authDomain: "next-ts-chat.firebaseapp.com",
-  projectId: "next-ts-chat",
-  storageBucket: "next-ts-chat.appspot.com",
-  messagingSenderId: "752522544387",
-  appId: "1:752522544387:web:48d1444033b80f9f631536",
+  apiKey: "AIzaSyAfzacHBrn7KTDQPlfIk5OrUysxfRYHnwg",
+  authDomain: "next-chat-a8d20.firebaseapp.com",
+  projectId: "next-chat-a8d20",
+  storageBucket: "next-chat-a8d20.appspot.com",
+  messagingSenderId: "952558605652",
+  appId: "1:952558605652:web:ac9b51882fb17ec041a4c1",
 };
 
 // Initialize Firebase
